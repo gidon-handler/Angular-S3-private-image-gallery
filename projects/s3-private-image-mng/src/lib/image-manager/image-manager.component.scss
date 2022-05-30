@@ -1,0 +1,87 @@
+:host {
+    font-family: sans-serif;
+    position: fixed;
+    z-index: 220;
+    background: #7a7a7ac2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#main {
+    margin: 30px 50px;
+    height: 90%;
+
+    input {
+        font-size: 18px;
+        padding: 6px;
+        margin: 0;
+    }
+}
+
+.tb {
+    display: inline-block;
+    background-color: lightgray;
+    font-size: 18px;
+    padding: 13px 26px;
+
+    &.active {
+        background: white;
+    }
+}
+
+#sec {
+    background: white;
+    padding: 25px;
+
+    article {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: 60vh;
+        overflow: auto;
+        margin-top: 25px;
+    }
+}
+
+button {
+    padding: 8px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px
+}
+
+.btn-primary {
+    background: #03a9f4;
+    color: #fff;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    background: azure;
+    border: 2px dashed #03a9f4;
+    position: relative;
+    margin: 20px 0;
+
+    input {
+        height: 180px;
+        width: 100%;
+        opacity: 0;
+        cursor: grab;
+    }
+
+    b {
+        position: absolute;
+        top: 40%;
+        left: 42%;
+        display: flex;
+        font-size: 20px;
+    }
+}

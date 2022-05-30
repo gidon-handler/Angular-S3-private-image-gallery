@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "s3-private-image-mng": {
+      "projectType": "library",
+      "root": "projects/s3-private-image-mng",
+      "sourceRoot": "projects/s3-private-image-mng/src",
+      "prefix": "s3imgs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/s3-private-image-mng/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/s3-private-image-mng/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/s3-private-image-mng/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/s3-private-image-mng/src/test.ts",
+            "tsConfig": "projects/s3-private-image-mng/tsconfig.spec.json",
+            "karmaConfig": "projects/s3-private-image-mng/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "image-lib-holder"

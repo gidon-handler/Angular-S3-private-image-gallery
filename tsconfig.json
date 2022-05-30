@@ -16,6 +16,12 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "s3-private-image-mng": [
+        "dist/s3-private-image-mng/s3-private-image-mng",
+        "dist/s3-private-image-mng"
+      ]
+    },
     "target": "es2017",
     "module": "es2020",
     "lib": [
