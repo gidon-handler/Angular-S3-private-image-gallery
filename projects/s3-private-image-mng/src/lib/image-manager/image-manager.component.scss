@@ -2,7 +2,7 @@
     font-family: sans-serif;
     position: fixed;
     z-index: 220;
-    background: #7a7a7ac2;
+    background: #444444c9;
     top: 0;
     bottom: 0;
     left: 0;
@@ -25,6 +25,7 @@
     background-color: lightgray;
     font-size: 18px;
     padding: 13px 26px;
+    cursor: pointer;
 
     &.active {
         background: white;
@@ -37,11 +38,22 @@
 
     article {
         display: flex;
-        justify-content: space-between;
+        gap: 25px;
         flex-wrap: wrap;
-        height: 60vh;
+        max-height: 60vh;
         overflow: auto;
-        margin-top: 25px;
+        margin: 36px 0;
+        padding: 4px;
+
+        div {
+            cursor: pointer;
+            &.selected {
+                outline: 4px solid #00b0ff;
+            }
+        }
+        img {
+            display: block;
+        }
     }
 }
 
@@ -49,7 +61,8 @@ button {
     padding: 8px 20px;
     font-size: 18px;
     border: none;
-    border-radius: 5px
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -60,7 +73,6 @@ button {
 footer {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
 }
 
 label {

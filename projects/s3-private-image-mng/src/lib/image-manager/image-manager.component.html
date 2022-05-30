@@ -7,13 +7,14 @@
 
     <div *ngIf="!upload">
       <input type="text" placeholder="Search">
-      <article>
-        <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11]">
+      <article (click)="test($event)">
+        <div *ngFor="let item of temp" (click)="selected=item" [class.selected]="selected==item">
           <img
-            src="https://media.exapro.com/product/2020/08/P00820091/c9546fbff07a5670ccd0a15071ea8eb3/462x340/hewlett-packard-hp-indigo-7500-digital-press-p00820091_7.jpg"
+            [src]="item.img"
             width="200">
         </div>
       </article>
+
       <footer>
         <button (click)="trigger.vc.detach(0)">Close</button>
         <button class="btn-primary" (click)="0">Update</button>
@@ -21,7 +22,7 @@
     </div>
 
     <div *ngIf="upload">
-       <input type="text" placeholder="Tag"><br>
+      <input type="text" placeholder="Tag"><br>
       <small>Tags will be used when searching for images</small>
       <label #thumb>
         <input id="file" type="file" accept="image/*" (change)="onSelectFiles($event)">
@@ -30,7 +31,7 @@
         </b>
       </label>
       <footer>
-        <button  (click)="trigger.vc.detach(0)">Close</button>
+        <button (click)="trigger.vc.detach(0)">Close</button>
         <button class="btn-primary" (click)="0">Upload</button>
       </footer>
     </div>
