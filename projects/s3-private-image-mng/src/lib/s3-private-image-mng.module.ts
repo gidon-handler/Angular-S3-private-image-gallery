@@ -7,11 +7,9 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     TriggerDirective,
-    ImageManagerComponent,
+    ImageManagerComponent
   ],
   imports: [CommonModule],
-  exports: [
-    TriggerDirective,
-  ]
+  exports: [TriggerDirective]
 })
 export class AngularAWSPrivateImageManagerModule { }

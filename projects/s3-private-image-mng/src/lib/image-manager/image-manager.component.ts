@@ -4,9 +4,7 @@ import { TriggerDirective } from '../trigger.directive';
 @Component({
   selector: 's3imgs-image-manager',
   templateUrl: './image-manager.component.html',
-  styleUrls: ['./image-manager.component.scss'],
-  
-  
+  styleUrls: ['./image-manager.component.scss']
 })
 export class ImageManagerComponent  {
 
@@ -39,23 +37,18 @@ export class ImageManagerComponent  {
 
   selected: any;
   upload: boolean = false;
-  objURL: string = '';
   @ViewChild('thumb') thumbnail: ElementRef<HTMLLabelElement> | any;
 
   constructor( public trigger: TriggerDirective) {}
 
   onSelectFiles(e: Event) {
      const file = (e.target as HTMLInputElement).files![0];
-     this.objURL = URL.createObjectURL(file);
      const img = new Image(150);
-     img.src = this.objURL;
+     img.src = URL.createObjectURL(file);
      this.thumbnail.nativeElement.after(img);
-     
   }
 
-  test(e: any){
-    console.log(e)
+  onSelectItem(){
+     this.trigger.s3imgSelected.emit(this.selected)
   }
-
-
 }

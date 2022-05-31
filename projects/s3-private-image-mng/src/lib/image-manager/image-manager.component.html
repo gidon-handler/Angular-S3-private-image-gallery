@@ -7,7 +7,7 @@
 
     <div *ngIf="!upload">
       <input type="text" placeholder="Search">
-      <article (click)="test($event)">
+      <article>
         <div *ngFor="let item of temp" (click)="selected=item" [class.selected]="selected==item">
           <img
             [src]="item.img"
@@ -16,8 +16,8 @@
       </article>
 
       <footer>
-        <button (click)="trigger.vc.detach(0)">Close</button>
-        <button class="btn-primary" (click)="0">Update</button>
+        <button type="button" (click)="trigger.vc.detach(0)">Close</button>
+        <button type="button" class="btn-primary" (click)="onSelectItem()">Update</button>
       </footer>
     </div>
 
