@@ -1,4 +1,4 @@
-import { ComponentRef, Directive, EventEmitter, HostListener, Injector, Output, ViewContainerRef, ViewRef } from '@angular/core';
+import { ComponentRef, Directive, EventEmitter, HostListener, Injector, Input, Output, ViewContainerRef, ViewRef } from '@angular/core';
 import { ImageManagerComponent } from './image-manager/image-manager.component';
 
 @Directive({
@@ -7,7 +7,7 @@ import { ImageManagerComponent } from './image-manager/image-manager.component';
 export class TriggerDirective {
 
   viewRef: ViewRef | undefined;
-
+  @Input('s3imgsTrigger') apiPath: string = '/'; 
   @Output() s3imgSelected = new EventEmitter<number>();
 
   @HostListener('click')

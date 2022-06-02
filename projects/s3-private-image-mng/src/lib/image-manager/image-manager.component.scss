@@ -40,7 +40,7 @@
         display: flex;
         gap: 25px;
         flex-wrap: wrap;
-        max-height: 60vh;
+        height: 60vh;
         overflow: auto;
         margin: 36px 0;
         padding: 4px;
@@ -53,6 +53,7 @@
         }
         img {
             display: block;
+            object-fit: cover;
         }
     }
 }
@@ -72,7 +73,8 @@ button {
 
 footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
+    margin-top: 20px;
 }
 
 label {
@@ -96,4 +98,9 @@ label {
         display: flex;
         font-size: 20px;
     }
+}
+
+form:invalid #upload{
+    background-color: rgb(170, 170, 170);
+    pointer-events: none;
 }
