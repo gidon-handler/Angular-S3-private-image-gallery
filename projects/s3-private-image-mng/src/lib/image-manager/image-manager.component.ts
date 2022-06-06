@@ -12,7 +12,7 @@ export class ImageManagerComponent {
 
   selected: any;
   upload: boolean = false;
-  images$ = this.http.get<any>(this.trigger.apiPath);
+  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
 
   constructor(public trigger: TriggerDirective, private http: HttpClient) { }
 
@@ -28,6 +28,6 @@ export class ImageManagerComponent {
      const fd = new FormData;
      fd.append('tag', tag);
      fd.append('file', file.files[0])
-     this.http.post(this.trigger.apiPath, fd).subscribe()
+     this.http.post(this.trigger.apiPaths.upload, fd).subscribe()
   }
 }
