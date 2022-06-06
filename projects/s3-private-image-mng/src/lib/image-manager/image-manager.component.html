@@ -10,7 +10,7 @@
       <input type="text" placeholder="Search">
       <article>
         <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
-          <img [src]="item.url" width="200" height="200" loading="lazy">
+          <img [src]="item.thumbnailUrl" width="200" height="200" loading="lazy">
         </div>
       </article>
 
