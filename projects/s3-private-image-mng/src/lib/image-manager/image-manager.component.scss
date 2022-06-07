@@ -40,7 +40,7 @@
         display: flex;
         gap: 25px;
         flex-wrap: wrap;
-        height: 60vh;
+        height: 55vh;
         overflow: auto;
         margin: 36px 0;
         padding: 4px;
@@ -70,11 +70,21 @@ button {
     background: #03a9f4;
     color: #fff;
 }
+.btn-warn {
+    background: #f44336;
+    color: #fff;
+}
 
 footer {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     margin-top: 20px;
+    #delete{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+    }
 }
 
 label {

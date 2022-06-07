@@ -15,27 +15,37 @@
       </article>
 
       <footer>
-        <button type="button" (click)="trigger.vc.detach(0)">Close</button>
-        <button type="button" class="btn-primary" (click)="onSelectItem()">Update</button>
+        <div>
+          <ng-container *ngIf="selected">
+            <span>{{selected.thumbnail}}</span>
+          <div id="delete">
+            <span>Size: <b>{{selected.size / 1000}} </b>KB</span>
+            <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
+          </div>
+          </ng-container>
+        </div>
+        <div><button type="button" (click)="trigger.vc.detach(0)">Close</button>
+          <button type="button" class="btn-primary" (click)="onSelectItem()">Update</button>
+        </div>
       </footer>
     </div>
 
     <form *ngIf="upload">
-        <input #tag type="text" placeholder="Tag" required><br>
-        <small>Tags will be used when searching for images</small>
-        <label>
-          <input type="file" #file accept="image/*" (change)="onSelectFiles($event, thumb)" required>
-          <b>
-            Choose or drag image here
-          </b>
-        </label>
-        <img src="" width="150" #thumb>
-     
+      <input #tag type="text" placeholder="Tag" required><br>
+      <small>Tags will be used when searching for images</small>
+      <label>
+        <input type="file" #file accept="image/*" (change)="onSelectFiles($event, thumb)" required>
+        <b>
+          Choose or drag image here
+        </b>
+      </label>
+      <img src="" width="150" #thumb>
+
       <footer>
         <button (click)="trigger.vc.detach(0)">Close</button>&nbsp;
         <button type="button" id="upload" class="btn-primary" (click)="onUpload(tag.value, file)">Upload</button>
       </footer>
-     </form>
+    </form>
 
   </div>
 </div>

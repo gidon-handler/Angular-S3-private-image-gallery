@@ -3,7 +3,8 @@ import { ImageManagerComponent } from './image-manager/image-manager.component';
 
 export interface ApiPaths{
   getImages: string,
-  upload: string
+  upload: string,
+  delete: string
 }
 
 @Directive({
@@ -12,7 +13,7 @@ export interface ApiPaths{
 export class TriggerDirective {
 
   viewRef: ViewRef | undefined;
-  @Input('s3imgsTrigger') apiPaths: ApiPaths = {getImages: '/', upload: '/upload'}; 
+  @Input('s3imgsTrigger') apiPaths: ApiPaths = {getImages: '/', upload: '/upload', delete: '/delete'}; 
   @Output() s3imgSelected = new EventEmitter<number>();
 
   @HostListener('click')

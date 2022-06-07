@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { TriggerDirective } from '../trigger.directive';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,10 +24,14 @@ export class ImageManagerComponent {
     this.trigger.s3imgSelected.emit(this.selected)
   }
 
-  onUpload(tag: string, file: any ){
-     const fd = new FormData;
-     fd.append('tag', tag);
-     fd.append('file', file.files[0])
-     this.http.post(this.trigger.apiPaths.upload, fd).subscribe()
+  onUpload(tag: string, file: any) {
+    const fd = new FormData;
+    fd.append('tag', tag);
+    fd.append('file', file.files[0])
+    this.http.post(this.trigger.apiPaths.upload, fd).subscribe()
+  }
+
+  deleteImage(id: string) {
+    this.http.delete(this.trigger.apiPaths.delete + '/' + id).subscribe()
   }
 }
