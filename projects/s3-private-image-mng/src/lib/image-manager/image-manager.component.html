@@ -15,18 +15,20 @@
       </article>
 
       <footer>
+
         <div>
           <ng-container *ngIf="selected">
-            <span>{{selected.thumbnail}}</span>
-          <div id="delete">
-            <span>Size: <b>{{selected.size / 1000}} </b>KB</span>
-            <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
-          </div>
+            <div>{{selected.thumbnail}}</div>
+            <div id="delete">
+              <span>Size: <b>{{selected.size / 1000}} </b>KB</span>
+              <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
+              <button type="button" class="btn-primary" (click)="onSelectItem()">Select</button>
+            </div>
           </ng-container>
         </div>
-        <div><button type="button" (click)="trigger.vc.detach(0)">Close</button>
-          <button type="button" class="btn-primary" (click)="onSelectItem()">Update</button>
-        </div>
+
+        <button type="button" (click)="trigger.vc.clear()">Close</button>
+
       </footer>
     </div>
 
