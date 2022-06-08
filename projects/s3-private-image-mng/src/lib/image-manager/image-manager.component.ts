@@ -17,7 +17,7 @@ export class ImageManagerComponent {
 
   constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
 
-  getImages(tag: string){
+  getImages(tag?: string){
     this.images$ = this.http.get<any>(this.trigger.apiPaths.getImages + tag);
   }
 
@@ -39,6 +39,7 @@ export class ImageManagerComponent {
       next: () => {
         this.upload = false;
         alert('Image uploaded');
+        this.getImages();
         this.cd.markForCheck();
       }
     })
