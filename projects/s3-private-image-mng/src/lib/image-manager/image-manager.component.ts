@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { TriggerDirective } from '../trigger.directive';
 import { HttpClient } from '@angular/common/http';
-import { ThisReceiver } from '@angular/compiler';
+
 
 @Component({
   selector: 's3imgs-image-manager',
@@ -16,6 +16,10 @@ export class ImageManagerComponent {
   images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
 
   constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
+
+  getImages(tag: string){
+    this.images$ = this.http.get<any>(this.trigger.apiPaths.getImages + tag);
+  }
 
   onSelectFiles(e: any, thumb: HTMLImageElement) {
     thumb.src = URL.createObjectURL(e.target.files[0])
@@ -34,6 +38,7 @@ export class ImageManagerComponent {
      
       next: () => {
         this.upload = false;
+        alert('Image uploaded');
         this.cd.markForCheck();
       }
     })

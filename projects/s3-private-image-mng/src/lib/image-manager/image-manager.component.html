@@ -1,35 +1,34 @@
-<div id="main">
+<div id="s3-main">
 
   <span class="tb" [class.active]="!upload" (click)="upload=false">Images</span>
   <span class="tb" [class.active]="upload" (click)="upload=true">Upload New</span>
 
   <div id="sec">
 
-    <div *ngIf="!upload && (images$ | async) as images">
+    <div id="images" *ngIf="!upload && (images$ | async) as images">
+      <div id="left">
 
-      <input type="text" placeholder="Search">
-      <article>
-        <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
-          <img [src]="item.thumbnailUrl" width="200" height="200" loading="lazy">
+        <input type="text" #tag placeholder="Tag"> 
+        <button type="button" class="btn-primary" (click)="getImages(tag.value)">Search</button>
+        <div id="list">
+          <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
+            <img [src]="item.thumbnailUrl" width="200" height="200" loading="lazy">
+          </div>
         </div>
-      </article>
 
-      <footer>
+      </div>
 
+      <aside *ngIf="selected">
         <div>
-          <ng-container *ngIf="selected">
-            <div>{{selected.thumbnail}}</div>
-            <div id="delete">
-              <span>Size: <b>{{selected.size / 1000}} </b>KB</span>
-              <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
-              <button type="button" class="btn-primary" (click)="onSelectItem()">Select</button>
-            </div>
-          </ng-container>
+          <div>{{selected.thumbnail}}</div>
+          <p>Size: <b>{{selected.size / 1000}} </b>KB</p>
         </div>
+        <footer>
+          <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
+          <button type="button" class="btn-primary" (click)="onSelectItem()">Select</button>
+        </footer>
+      </aside>
 
-        <button type="button" (click)="trigger.vc.clear()">Close</button>
-
-      </footer>
     </div>
 
     <form *ngIf="upload">
@@ -44,10 +43,10 @@
       <img src="" width="150" #thumb>
 
       <footer>
-        <button (click)="trigger.vc.detach(0)">Close</button>&nbsp;
-        <button type="button" id="upload" class="btn-primary" (click)="onUpload(tag.value, file)">Upload</button>
+        <button type="button" class="btn-primary" (click)="onUpload(tag.value, file)">Upload</button>
       </footer>
-    </form>
 
+    </form>
+    <button type="button" (click)="trigger.vc.clear()">Close</button>
   </div>
 </div>
