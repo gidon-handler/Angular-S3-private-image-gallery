@@ -6,8 +6,8 @@
   <div id="sec">
 
     <div id="images" *ngIf="!upload && (images$ | async) as images">
-      <div id="left">
 
+      <div id="left">
         <input type="text" #tag placeholder="Tag"> 
         <button type="button" class="btn-primary" (click)="getImages(tag.value)">Search</button>
         <div id="list">
@@ -15,7 +15,6 @@
             <img [src]="item.thumbnailUrl" width="200" height="200" loading="lazy">
           </div>
         </div>
-
       </div>
 
       <aside *ngIf="selected">
@@ -28,7 +27,6 @@
           <button type="button" class="btn-primary" (click)="onSelectItem()">Select</button>
         </footer>
       </aside>
-
     </div>
 
     <form *ngIf="upload">
@@ -41,12 +39,11 @@
         </b>
       </label>
       <img src="" width="150" #thumb>
-
       <footer>
         <button type="button" class="btn-primary" (click)="onUpload(tag.value, file)">Upload</button>
       </footer>
-
     </form>
+    
     <button type="button" (click)="trigger.vc.clear()">Close</button>
   </div>
 </div>

@@ -10,14 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ImageManagerComponent {
 
-
   selected: any;
   upload: boolean = false;
-  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
+  images$ = this.http.get<any>(this.trigger.apiPaths.getImages)
 
-  constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
+  constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) {}
 
-  getImages(tag: string){
+  getImages(tag: string = ''){
     this.images$ = this.http.get<any>(this.trigger.apiPaths.getImages + tag);
   }
 
@@ -39,6 +38,7 @@ export class ImageManagerComponent {
       next: () => {
         this.upload = false;
         alert('Image uploaded');
+        this.getImages();
         this.cd.markForCheck();
       }
     })
