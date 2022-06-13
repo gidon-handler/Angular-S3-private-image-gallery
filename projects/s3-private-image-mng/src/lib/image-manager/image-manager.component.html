@@ -5,29 +5,31 @@
 
   <div id="sec">
 
-    <div id="images" *ngIf="!upload && (images$ | async) as images">
-
-      <div id="left">
+  
+      <div *ngIf="!upload && (images$ | async) as images">
         <input type="text" #tag placeholder="Tag"> 
-        <button type="button" class="btn-primary" (click)="getImages(tag.value)">Search</button>
+        <button type="button" class="primary" (click)="getImages(tag.value)">Search</button>
         <div id="list">
-          <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
-            <img [src]="item.thumbnailUrl" width="200" height="200" loading="lazy">
+
+          <div id="left">
+            <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
+            <img [src]="item.thumbnailUrl" width="185" height="185" loading="lazy">
           </div>
+          </div>
+          
+          <aside *ngIf="selected">
+            <div>
+              <div>{{selected.thumbnail}}</div>
+              <p>Size: <b>{{selected.size / 1000}} </b>KB</p>
+            </div>
+            <footer>
+              <button type="button" class="warn" (click)="deleteImage(selected.id)">Delete</button>
+              <button type="button" class="primary" (click)="onSelectItem()">Select</button>
+            </footer>
+          </aside>
         </div>
       </div>
 
-      <aside *ngIf="selected">
-        <div>
-          <div>{{selected.thumbnail}}</div>
-          <p>Size: <b>{{selected.size / 1000}} </b>KB</p>
-        </div>
-        <footer>
-          <button type="button" class="btn-warn" (click)="deleteImage(selected.id)">Delete</button>
-          <button type="button" class="btn-primary" (click)="onSelectItem()">Select</button>
-        </footer>
-      </aside>
-    </div>
 
     <form *ngIf="upload">
       <input #tag type="text" placeholder="Tag" required><br>
@@ -40,7 +42,7 @@
       </label>
       <img src="" width="150" #thumb>
       <footer>
-        <button type="button" class="btn-primary" (click)="onUpload(tag.value, file)">Upload</button>
+        <button type="button" class="primary" (click)="onUpload(tag.value, file)">Upload</button>
       </footer>
     </form>
     

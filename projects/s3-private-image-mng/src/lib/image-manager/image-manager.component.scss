@@ -12,12 +12,6 @@
 #s3-main {
     margin: 30px 50px;
 
-    input {
-        font-size: 18px;
-        padding: 6px;
-        margin: 0 12px 0 0;
-    }
-
     .tb {
         display: inline-block;
         background-color: lightgray;
@@ -30,45 +24,70 @@
         }
     }
 
+    input {
+        font-size: 18px;
+        padding: 6px;
+        margin: 0 12px 0 0;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 7px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &.primary {
+            background: #03a9f4;
+            color: #fff;
+        }
+
+        &.warn {
+            background: #f44336;
+            color: #fff;
+        }
+    }
+
+
     #sec {
         background: white;
         padding: 25px;
     }
 
-    #images {
+
+
+    #list {
         display: flex;
+        margin: 36px 0;
 
         #left {
-            flex-grow: 1;
+            display: flex;
+            align-items: baseline;
+            gap: 25px;
+            flex-wrap: wrap;
+            height: 55vh;
+            overflow: auto;
+            padding: 4px;
 
-            #list {
-                display: flex;
-                align-items: baseline;
-                gap: 25px;
-                flex-wrap: wrap;
-                height: 55vh;
-                overflow: auto;
-                margin: 36px 0;
-                padding: 4px;
+            div {
+                cursor: pointer;
 
-                div {
-                    cursor: pointer;
-
-                    &.selected {
-                        outline: 4px solid #00b0ff;
-                    }
+                &.selected {
+                    outline: 4px solid #00b0ff;
                 }
+            }
 
-                img {
-                    display: block;
-                    object-fit: cover;
-                }
+            img {
+                display: block;
+                object-fit: cover;
             }
         }
 
         aside {
             flex-basis: 0;
-            background: lightgrey;
+            background: #e5e5e5;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -81,50 +100,39 @@
         }
     }
 
-    button {
-        padding: 7px 20px;
-        font-size: 18px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+    form {
+        padding: 17px;
+        background: #e5e5e5;
+        border-radius: 9px;
+        margin: 20px 0px;
+
+        label {
+            display: block;
+            background: azure;
+            border: 2px dashed #03a9f4;
+            position: relative;
+            margin: 20px 0;
+
+            input {
+                height: 180px;
+                width: 100%;
+                opacity: 0;
+                cursor: grab;
+            }
+
+            b {
+                position: absolute;
+                top: 40%;
+                left: 42%;
+                display: flex;
+                font-size: 20px;
+            }
+        }
+
+        form:invalid #upload {
+            background-color: rgb(170, 170, 170);
+            pointer-events: none;
+        }
     }
 
-    .btn-primary {
-        background: #03a9f4;
-        color: #fff;
-    }
-
-    .btn-warn {
-        background: #f44336;
-        color: #fff;
-    }
-
-}
-
-label {
-    display: block;
-    background: azure;
-    border: 2px dashed #03a9f4;
-    position: relative;
-    margin: 20px 0;
-
-    input {
-        height: 180px;
-        width: 100%;
-        opacity: 0;
-        cursor: grab;
-    }
-
-    b {
-        position: absolute;
-        top: 40%;
-        left: 42%;
-        display: flex;
-        font-size: 20px;
-    }
-}
-
-form:invalid #upload {
-    background-color: rgb(170, 170, 170);
-    pointer-events: none;
 }
