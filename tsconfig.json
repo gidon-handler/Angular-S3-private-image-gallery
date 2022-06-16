@@ -18,8 +18,8 @@
     "importHelpers": true,
     "paths": {
       "s3-private-image-mng": [
-        "dist/s3-private-image-mng/s3-private-image-mng",
-        "dist/s3-private-image-mng"
+        "dist/ngx-awsS3-private-image-mng/ngx-awsS3-private-image-mng",
+        "dist/ngx-awsS3-private-image-mng"
       ]
     },
     "target": "es2017",

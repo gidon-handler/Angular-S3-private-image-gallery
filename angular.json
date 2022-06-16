@@ -106,23 +106,23 @@
         }
       }
     },
-    "s3-private-image-mng": {
+    "ngx-awsS3-private-image-mng": {
       "projectType": "library",
-      "root": "projects/s3-private-image-mng",
-      "sourceRoot": "projects/s3-private-image-mng/src",
+      "root": "projects/ngx-awsS3-private-image-mng",
+      "sourceRoot": "projects/ngx-awsS3-private-image-mng/src",
       "prefix": "s3imgs",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/s3-private-image-mng/ng-package.json"
+            "project": "projects/ngx-awsS3-private-image-mng/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/s3-private-image-mng/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-awsS3-private-image-mng/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/s3-private-image-mng/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-awsS3-private-image-mng/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -130,9 +130,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/s3-private-image-mng/src/test.ts",
-            "tsConfig": "projects/s3-private-image-mng/tsconfig.spec.json",
-            "karmaConfig": "projects/s3-private-image-mng/karma.conf.js"
+            "main": "projects/ngx-awsS3-private-image-mng/src/test.ts",
+            "tsConfig": "projects/ngx-awsS3-private-image-mng/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-awsS3-private-image-mng/karma.conf.js"
           }
         }
       }

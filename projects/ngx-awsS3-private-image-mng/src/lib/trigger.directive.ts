@@ -7,6 +7,12 @@ export interface ApiPaths {
   delete: string
 }
 
+export interface GalleryImage{
+  id: string,
+  url: string,
+  thumbnailUrl: string;
+}
+
 @Directive({
   selector: '[s3imgsTrigger]'
 })
