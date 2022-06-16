@@ -1,0 +1,17 @@
+{
+  "name": "ngx-aws-s3-private-image-mng",
+  "version": "1.0.4",
+  "description": "An Angular library to manage, add, remove and select images from a private AWS S3 bucket",
+   "keywords": ["Angular", "Image gallery", "AWS S3", "private bucket"],
+   "homepage": "https://github.com/gidon-handler/Angular-S3-private-image-gallery/tree/master/projects/ngx-aws-s3-private-image-mng",
+   "license" : "BSD-3-Clause",
+   "author": {"name": "Gidon Handler", "email": "gidon.handler@gmial.com"},
+   "contributors": [{"name": "Rafi Shukrun", "email": "rafi.shukrun@hp.com"}],
+  "peerDependencies": {
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
