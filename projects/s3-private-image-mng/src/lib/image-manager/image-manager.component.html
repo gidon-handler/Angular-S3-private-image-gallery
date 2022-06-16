@@ -5,30 +5,35 @@
 
   <div id="sec">
 
-  
-      <div *ngIf="!upload && (images$ | async) as images">
-        <input type="text" #tag placeholder="Tag"> 
-        <button type="button" class="primary" (click)="getImages(tag.value)">Search</button>
+    <ng-container *ngIf="!upload">
+
+      <input type="text" #tag placeholder="Tag">
+      <button type="button" class="primary" (click)="getImages(tag.value)">Search</button><br>
+
+      <div *ngIf="images$ | async as images">
+        <small>Number of Images: {{images.length}}</small>
         <div id="list">
 
           <div id="left">
             <div *ngFor="let item of images" (click)="selected=item" [class.selected]="selected==item">
-            <img [src]="item.thumbnailUrl" width="185" height="185" loading="lazy">
+              <img [src]="item.thumbnailUrl" width="185" height="185" loading="lazy">
+            </div>
           </div>
-          </div>
-          
+
           <aside *ngIf="selected">
             <div>
               <div>{{selected.thumbnail}}</div>
-              <p>Size: <b>{{selected.size / 1000}} </b>KB</p>
+              <p>Original Size: <b>{{selected.size / 1024}} </b>KB</p>
             </div>
             <footer>
+              <button type="button"  (click)="selected=null">Close</button>
               <button type="button" class="warn" (click)="deleteImage(selected.id)">Delete</button>
               <button type="button" class="primary" (click)="onSelectItem()">Select</button>
             </footer>
           </aside>
         </div>
       </div>
+    </ng-container>
 
 
     <form *ngIf="upload">
@@ -45,7 +50,7 @@
         <button type="button" class="primary" (click)="onUpload(tag.value, file)">Upload</button>
       </footer>
     </form>
-    
+
     <button type="button" (click)="trigger.vc.clear()">Close</button>
   </div>
 </div>

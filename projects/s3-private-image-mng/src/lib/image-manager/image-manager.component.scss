@@ -60,7 +60,7 @@
 
     #list {
         display: flex;
-        margin: 36px 0;
+        margin: 20px 0 35px;
 
         #left {
             display: flex;
@@ -88,7 +88,7 @@
         aside {
             flex-basis: 0;
             background: #e5e5e5;
-            padding: 20px;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -102,10 +102,10 @@
 
     form {
         padding: 17px;
-        background: #e5e5e5;
+        background: #f3f3f3;
         border-radius: 9px;
-        margin: 20px 0px;
-
+        margin: 47px;
+        border: none;
         label {
             display: block;
             background: azure;
