@@ -48,7 +48,7 @@ import { ApiPaths, GalleryImage } from 'ngx-aws-s3-private-image-mng';
 })
 export class MyComponent implements OnInit {
   
-  // Serve API that get Imported into the library
+  // Server APIs that get Imported into the library
   apis: ApiPaths = {
     getImages: '/path/to/getImages/api/',
     upload: '/path/to/upload/api',
