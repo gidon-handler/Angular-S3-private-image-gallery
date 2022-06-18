@@ -76,12 +76,10 @@ Your server will need to save the original file and a thumbnail version of the f
 
 ### A table or collection with the following fields:
 * id 
-* key
-* size
-* tag
-* thumbnail
-* thumbnailUrl
-* url
+* key - The S3 path and name of the image.
+* size - The size of the original image.
+* tag - Tag name of the image for searching.
+
 
 ```
 TBD
@@ -90,8 +88,8 @@ TBD
 **Server**
 
 ### The server will need the following API's
-* GET. Takes an optional tag param. Returns an array of image objects. The object will contain AWS presigned URL'S.
-* POST. Takes an image file and a tag name. Creates a thumbnail version, saves to DB and to S3 bucket.
+* POST. Takes an image file and a tag name. Creates a thumbnail version and saves original and thumbnail images to S3 bucket. Saves to DB size, tag and key.
+* GET. Takes an optional tag param. Returns an array of image objects. The serve will generate AWS presigned URL'S for each image and thumbnail and return to client along with tag size and key for each image.
 * DELETE. API with id route param of the image id to delete. Deletes form DB and from S3 bucket.
 
 ```

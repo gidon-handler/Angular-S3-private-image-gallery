@@ -106,6 +106,7 @@
         border-radius: 9px;
         margin: 47px;
         border: none;
+
         label {
             display: block;
             background: azure;
@@ -133,6 +134,11 @@
             background-color: rgb(170, 170, 170);
             pointer-events: none;
         }
+    }
+
+    progress {
+        width: 100%;
+        margin-top: 15px;
     }
 
 }

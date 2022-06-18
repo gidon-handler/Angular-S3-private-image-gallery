@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { TriggerDirective } from '../trigger.directive';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -12,11 +12,12 @@ export class ImageManagerComponent {
 
   selected: any;
   upload: boolean = false;
-  images$ = this.http.get<any>(this.trigger.apiPaths.getImages)
+  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
+  progress = 0;
 
-  constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) {}
+  constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
 
-  getImages(tag: string = ''){
+  getImages(tag: string = '') {
     this.images$ = this.http.get<any>(this.trigger.apiPaths.getImages + tag);
   }
 
@@ -33,12 +34,20 @@ export class ImageManagerComponent {
     const fd = new FormData;
     fd.append('tag', tag);
     fd.append('file', file.files[0])
-    this.http.post(this.trigger.apiPaths.upload, fd).subscribe({
-     
-      next: () => {
-        this.upload = false;
-        alert('Image uploaded');
-        this.getImages();
+    this.http.post(this.trigger.apiPaths.upload, fd, { withCredentials: true, reportProgress: true, observe: 'events' }).subscribe({
+
+      next: (e: HttpEvent<any>) => {
+        
+        switch (e.type) {
+
+          case HttpEventType.UploadProgress:
+            this.progress = e.total ? e.loaded / e.total * 100 : 0
+            break
+          case HttpEventType.Response:
+            this.progress = 0;
+            this.upload = false;
+            this.getImages();
+        }
         this.cd.markForCheck();
       }
     })
@@ -48,5 +57,9 @@ export class ImageManagerComponent {
     this.http.delete(this.trigger.apiPaths.delete + '/' + id).subscribe({
       next: () => alert("Image deleted")
     })
+  }
+
+  full() {
+    window.open(this.selected.url, '', 'popup')
   }
 }
