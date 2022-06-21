@@ -76,24 +76,22 @@ Your server will need to save the original file and a thumbnail version of the f
 
 ### A table or collection with the following fields:
 * id 
-* key - The S3 path and name of the image.
-* size - The size of the original image.
-* tag - Tag name of the image for searching.
+* key: String - The S3 path and name of the image. (someFolder/someFloder/nameOfFile)
+* size: Int - The size of the original image.
+* tag: String - Tag name of the image for searching. (this comes from client when uploading a new file)
 
-
-```
-TBD
-```
 
 **Server**
 
-### The server will need the following API's
-* POST. Takes an image file and a tag name. Creates a thumbnail version and saves original and thumbnail images to S3 bucket. Saves to DB size, tag and key.
-* GET. Takes an optional tag param. Returns an array of image objects. The serve will generate AWS presigned URL'S for each image and thumbnail and return to client along with tag size and key for each image.
-* DELETE. API with id route param of the image id to delete. Deletes form DB and from S3 bucket.
+### Your server will need the following API's
+* POST. Takes an image file and a tag name (The payload will be a formData object with fields **tag** and **file**). Create a thumbnail version and save original and thumbnail images to S3 bucket (apent the string "thumbnail" to the thumbnail version). Save to DB size, tag and key (The key is the S3 path and name of the image. (someFolder/someFloder/nameOfFile).
 
-```
-TBD
-```
+* GET. Takes an optional (url) tag param. Return an array of image objects. The serve will get the rows from the DB (Filter the results by the optional tag field.),  generate AWS presigned URL'S for each image and thumbnail and return to client along with tag, size, and key for each image.
+Each object will have the shape of
+```{id: "theDBid", key: "the KeyFieldFromDB",size: "theSizeFieldFromDB", tag: "theTagFieldFromDB", thumbnail: "thePathOfFileThumnail", thumbnailUrl: "theGeneratedPresigendURLofThumnail", url: "theGeneratedPresigendURLofOriginal" }```.
+
+
+* DELETE. API with id route param of the image id to delete. Delete form DB and from S3 bucket (Don't forget to delete original and thumbnail).
+
 
 
