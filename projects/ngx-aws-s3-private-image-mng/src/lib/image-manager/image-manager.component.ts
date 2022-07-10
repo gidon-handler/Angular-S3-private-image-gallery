@@ -1,8 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { TriggerDirective } from '../trigger.directive';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { of } from 'rxjs';
-
 
 
 @Component({
@@ -14,8 +12,7 @@ export class ImageManagerComponent {
 
   selected: any;
   upload: boolean = false;
-//  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
-  images$ = of([{id:123, key: 123, size:1234,tag: 'aaaa', thumbnail: 'qqqq', thumbnailUrl: 'fdgdf' }]);
+  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
   progress = 0;
 
   constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
