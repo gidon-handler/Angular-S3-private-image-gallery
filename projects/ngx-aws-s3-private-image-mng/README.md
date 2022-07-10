@@ -59,8 +59,9 @@ export class MyComponent implements OnInit {
 In your Compoent .html file
 
 ```
- <any-el [s3imgsTrigger]="apis"(s3imgSelected)="myFunc($event)"></any-el>
+ <any-el [s3imgsTrigger]="apis" [disableDelete]="true" (s3imgSelected)="myFunc($event)"></any-el>
 ```
+@Input() disableDelete - whether the delete image option is disabled. (defualt is falue).
 The s3imageSelected event is triggered when an image is selcted from the gallery.
 The $event emited by this event will be an object with the shape of GalleryImage. ({id: string, url: string, thumbnailUrl: string}).
 

@@ -19,6 +19,7 @@ export interface GalleryImage{
 export class TriggerDirective {
 
   @Input('s3imgsTrigger') apiPaths: ApiPaths = { getImages: '/', upload: '/upload', delete: '/delete' };
+  @Input() disableDelete = false;
   @Output() s3imgSelected = new EventEmitter<number>();
 
   @HostListener('click')

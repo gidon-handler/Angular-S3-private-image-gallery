@@ -29,7 +29,7 @@
             </div>
             <footer>
               <button type="button" (click)="selected=null">Close</button>
-              <button type="button" class="warn" (click)="deleteImage(selected.id)">Delete</button>
+              <button type="button" class="warn" [disabled]="trigger.disableDelete" (click)="deleteImage(selected.id)">Delete</button>
               <button type="button" class="primary" (click)="onSelectItem()">Select</button>
             </footer>
           </aside>

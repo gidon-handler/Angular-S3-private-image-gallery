@@ -25,7 +25,7 @@
     }
 
     input {
-        font-size: 18px;
+        font-size: 16px;
         padding: 6px;
         margin: 0 12px 0 0;
         border: 1px solid gray;
@@ -34,10 +34,11 @@
 
     button {
         padding: 7px 20px;
-        font-size: 18px;
+        font-size: 16px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin: 5px;
 
         &.primary {
             background: #03a9f4;
@@ -47,6 +48,10 @@
         &.warn {
             background: #f44336;
             color: #fff;
+        }
+        &[disabled]{
+            pointer-events: none;
+            opacity: .3;
         }
     }
 
@@ -70,6 +75,7 @@
             height: 55vh;
             overflow: auto;
             padding: 4px;
+            flex-grow: 1;
 
             div {
                 cursor: pointer;
@@ -86,12 +92,12 @@
         }
 
         aside {
-            flex-basis: 0;
             background: #e5e5e5;
             padding: 20px 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-radius: 6px;
 
             footer {
                 display: flex;
