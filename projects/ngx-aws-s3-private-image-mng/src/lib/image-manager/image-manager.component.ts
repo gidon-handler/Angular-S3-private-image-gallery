@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { TriggerDirective } from '../trigger.directive';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 
-
 @Component({
   selector: 's3imgs-image-manager',
   templateUrl: './image-manager.component.html',
@@ -21,7 +20,13 @@ export class ImageManagerComponent {
     this.images$ = this.http.get<any>(this.trigger.apiPaths.getImages + tag);
   }
 
-  onSelectFiles(e: any, thumb: HTMLImageElement) {
+  onSelectFiles(e: any, thumb: HTMLImageElement, tag: HTMLInputElement) {
+
+    if (!tag.value) {
+      tag.value = e.target.files?.item(0)?.name.replace(/\..+$/, '');
+      this.cd.markForCheck();
+    }
+
     thumb.src = URL.createObjectURL(e.target.files[0])
   }
 
@@ -30,14 +35,15 @@ export class ImageManagerComponent {
     this.trigger.vc.clear();
   }
 
-  onUpload(tag: string, file: any) {
+  onUpload(tag: string, file: HTMLInputElement) {
+
     const fd = new FormData;
     fd.append('tag', tag);
-    fd.append('file', file.files[0])
+    fd.append('file', file.files ? file.files[0] : '');
     this.http.post(this.trigger.apiPaths.upload, fd, { withCredentials: true, reportProgress: true, observe: 'events' }).subscribe({
 
       next: (e: HttpEvent<any>) => {
-        
+
         switch (e.type) {
 
           case HttpEventType.UploadProgress:
@@ -49,8 +55,12 @@ export class ImageManagerComponent {
             this.getImages();
         }
         this.cd.markForCheck();
+      },
+      error: e => {
+        alert(e.error)
       }
-    })
+    }
+    )
   }
 
   deleteImage(id: string) {

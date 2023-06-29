@@ -42,7 +42,7 @@
       <input #tag type="text" placeholder="Tag" required><br>
       <small>Tags will be used when searching for images</small>
       <label>
-        <input type="file" #file accept="image/*" (change)="onSelectFiles($event, thumb)" required>
+        <input type="file" #file accept="image/*" (change)="onSelectFiles($event, thumb, tag)" required>
         <b>
           Choose or drag image here
         </b>
