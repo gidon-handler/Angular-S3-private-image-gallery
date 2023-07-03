@@ -13,7 +13,7 @@ export class ImageManagerComponent {
   upload: boolean = false;
   images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
   progress = 0;
-
+  errorMsg = '';
   constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
 
   getImages(tag: string = '') {
@@ -57,7 +57,7 @@ export class ImageManagerComponent {
         this.cd.markForCheck();
       },
       error: e => {
-        alert(e.error)
+        this.errorMsg = e.error
       }
     }
     )

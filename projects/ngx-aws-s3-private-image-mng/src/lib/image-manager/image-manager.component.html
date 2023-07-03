@@ -29,7 +29,8 @@
             </div>
             <footer>
               <button type="button" (click)="selected=null">Close</button>
-              <button type="button" class="warn" [disabled]="trigger.disableDelete" (click)="deleteImage(selected.id)">Delete</button>
+              <button type="button" class="warn" [disabled]="trigger.disableDelete"
+                (click)="deleteImage(selected.id)">Delete</button>
               <button type="button" class="primary" (click)="onSelectItem()">Select</button>
             </footer>
           </aside>
@@ -39,7 +40,11 @@
 
 
     <form *ngIf="upload">
-      <input #tag type="text" placeholder="Tag" required><br>
+      <input #tag type="text" placeholder="Tag" required>
+      <span>
+        {{errorMsg}}
+      </span>
+      <br>
       <small>Tags will be used when searching for images</small>
       <label>
         <input type="file" #file accept="image/*" (change)="onSelectFiles($event, thumb, tag)" required>
