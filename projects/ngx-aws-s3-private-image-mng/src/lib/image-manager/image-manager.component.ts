@@ -65,11 +65,20 @@ export class ImageManagerComponent {
 
   deleteImage(id: string) {
     this.http.delete(this.trigger.apiPaths.delete + '/' + id).subscribe({
-      next: () => alert("Image deleted")
+      next: () => {
+        alert("Image deleted");
+        this.close();
+      },
     })
   }
 
+
   full() {
     window.open(this.selected.url, '', 'popup')
+  }
+
+  close() {
+    this.selected = null;
+    this.trigger.vc.clear();
   }
 }

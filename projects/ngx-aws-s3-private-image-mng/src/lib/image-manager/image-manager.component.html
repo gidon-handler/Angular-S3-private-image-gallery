@@ -40,7 +40,7 @@
 
 
     <form *ngIf="upload">
-      <input #tag type="text" placeholder="Tag" required>
+      <input #tag type="text" placeholder="Tag" required (input)="0">
       <span>
         {{errorMsg}}
       </span>
@@ -54,13 +54,11 @@
       </label>
       <img src="" width="150" #thumb>
       <footer>
-        <button type="button" class="primary" (click)="onUpload(tag.value, file)">Upload</button>
-
+        <button type="button" class="primary" (click)="onUpload(tag.value, file)" [disabled]="!tag.value">Upload</button>
         <progress [value]="progress" max="100"></progress>
-
       </footer>
     </form>
 
-    <button type="button" (click)="trigger.vc.clear()">Close</button>
+    <button type="button" (click)="close()">Close</button>
   </div>
 </div>

@@ -7,7 +7,7 @@ import { ApiPaths } from 's3-private-image-mng';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'image-lib-holder';
+  
   apis: ApiPaths = {
     getImages: '/v2/api/sp/ppc/gallery/',
     upload: '/v2/api/sp/ppc/gallery/upload',
