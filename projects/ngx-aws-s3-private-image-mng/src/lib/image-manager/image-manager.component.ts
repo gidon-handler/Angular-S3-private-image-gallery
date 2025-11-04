@@ -11,7 +11,7 @@ export class ImageManagerComponent {
 
   selected: any;
   upload: boolean = false;
-  images$ = this.http.get<any>(this.trigger.apiPaths.getImages);
+  images$ = this.http.get<any>(this.trigger.apiPaths.getImages, { withCredentials: true });
   progress = 0;
   errorMsg = '';
   constructor(public trigger: TriggerDirective, private http: HttpClient, private cd: ChangeDetectorRef) { }
@@ -63,8 +63,13 @@ export class ImageManagerComponent {
     )
   }
 
-  deleteImage(id: string) {
-    this.http.delete(this.trigger.apiPaths.delete + '/' + id).subscribe({
+
+  deleteImage(selected: any) {
+    if(selected.ActionIds.length > 0) {
+      alert("This image is linked to other content entities.");
+      return;
+    }
+    this.http.delete(this.trigger.apiPaths.delete + '/' + selected.id).subscribe({
       next: () => {
         alert("Image deleted");
         this.close();

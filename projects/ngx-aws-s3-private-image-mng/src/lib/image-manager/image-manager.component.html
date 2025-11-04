@@ -25,12 +25,13 @@
               <div>{{selected.thumbnail}}</div>
               <p>Original Size: <b>{{selected.size / 1024 | number: '1.0-2'}} </b>KB</p>
               <p>Tag: <b>{{selected.tag}} </b></p>
+              <p *ngIf="trigger.inUse && selected.ActionIds">{{trigger.inUse}}: <b *ngFor="let i of selected.ActionIds">{{i}}, </b></p>
               <button type="button" class="primary" (click)="full()">View Full Size</button>
             </div>
             <footer>
               <button type="button" (click)="selected=null">Close</button>
               <button type="button" class="warn" [disabled]="trigger.disableDelete"
-                (click)="deleteImage(selected.id)">Delete</button>
+                (click)="deleteImage(selected)">Delete</button>
               <button type="button" class="primary" (click)="onSelectItem()">Select</button>
             </footer>
           </aside>
@@ -54,7 +55,8 @@
       </label>
       <img src="" width="150" #thumb>
       <footer>
-        <button type="button" class="primary" (click)="onUpload(tag.value, file)" [disabled]="!tag.value">Upload</button>
+        <button type="button" class="primary" (click)="onUpload(tag.value, file)"
+          [disabled]="!tag.value">Upload</button>
         <progress [value]="progress" max="100"></progress>
       </footer>
     </form>

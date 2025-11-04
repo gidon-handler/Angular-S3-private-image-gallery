@@ -19,11 +19,11 @@ export interface GalleryImage{
 export class TriggerDirective {
 
   @Input('s3imgsTrigger') apiPaths: ApiPaths = { getImages: '/', upload: '/upload', delete: '/delete' };
+  @Input() inUse = '';
   @Input() disableDelete = false;
   @Output() s3imgSelected = new EventEmitter<number>();
 
-  @HostListener('click')
-  openModal() {
+  @HostListener('click') openModal() {
     this.vc.createComponent(ImageManagerComponent, { injector: this.injector });
   }
 
